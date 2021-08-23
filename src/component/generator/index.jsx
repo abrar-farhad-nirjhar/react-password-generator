@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
 import style from './style.module.css'
 import PasswordImage from '../../assets/password.png'
+import passwordGenerator from '../../utils/generate-password'
 export default function Generator() {
 
     const [length, setLength] = useState(8)
-    const [password, setPassword] = useState('password')
+    const [password, setPassword] = useState('')
+    const generatePassword=() =>{
+        setPassword(passwordGenerator(parseInt(length)))
+    }
     return (
         <div className={style.container}>
             <img src={PasswordImage} className={style.icon} alt="password-icon" />
@@ -14,7 +18,7 @@ export default function Generator() {
                 <input type="text" value={password} className={style.passwordContainer} placeholder={"Generated Password"} disabled/>
                 <input type="number" value={length}  className={style.lengthInput} value={length} onChange={(e)=>setLength(e.target.value)}  min="8" max="30"/>
             </div>
-            <button className={style.generate}>Generate Password</button>
+            <button className={style.generate} onClick={generatePassword}>Generate Password</button>
         </div>
     )
 }
