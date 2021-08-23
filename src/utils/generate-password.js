@@ -7,7 +7,7 @@ const SPECIALS = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", ".
 const combined = [UPPERCASES, LOWERCASES, NUMBERS, SPECIALS]
 
 
-export default (length) =>{
+const passwordGenerator = (length) =>{
     let password = ""
     for(let i=0; i<length;i++){
         let fromCollection = Math.floor(Math.random() * 4)
@@ -15,3 +15,5 @@ export default (length) =>{
     }
     return password
 }
+
+export default passwordGenerator
